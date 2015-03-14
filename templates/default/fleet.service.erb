@@ -1,0 +1,13 @@
+[Unit]
+Description=fleet
+After=etcd.service
+Requires=etcd.service
+
+[Service]
+User=<%= node[:fleet][:user] %>
+ExecStart=/usr/local/bin/fleetd
+Restart=always
+RestartSec=10s
+
+[Install]
+WantedBy=default.target
